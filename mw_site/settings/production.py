@@ -1,10 +1,6 @@
 from .base import *
 
 DEBUG = False
-ALLOWED_HOSTS = ['szpuk.eu.pythonanywhere.com']
-ROOT_URLCONF = 'mw_site.urls'
-
-SECRET_KEY = os.getenv("SECRET_KEY")
 
 try:
     from .local import *
