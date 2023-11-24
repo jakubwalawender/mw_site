@@ -37,7 +37,8 @@
     {% endblock %}
 </head>
 
-<body class="{% block body_class %}{% endblock %} bg-gray-100" x-data="{openMenu:false}"
+<body class="{% block body_class %}{% endblock %} bg-gray-100 dark:bg-slate-900 dark:text-gray-50"
+      x-data="{openMenu:false}"
       :class="openMenu ? 'overflow-hidden' : 'overflow-visible'">
 {% include 'components/navbar.html' %}
 {% wagtailuserbar %}
