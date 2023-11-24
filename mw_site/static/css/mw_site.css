@@ -1,0 +1,7 @@
+.font-cinzel {
+    font-family: Cinzel, sans-serif;
+}
+
+[x-cloak] {
+    display: none !important;
+}
