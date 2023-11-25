@@ -1,69 +1,70 @@
 {% load wagtailimages_tags %}
 {% load menus_tags %}
 {% get_menu "main" as navigation %}
-<div>
-    <header class="flex justify-between items-center bg-white drop-shadow-sm py-4 px-8 font-cinzel dark:bg-gray-900 dark:text-gray-50 dark:drop-shadow-xl">
-        <div class="font-semibold text-md">{{ navigation.logo_txt }}</div>
-        <button class="flex md:hidden flex-col items-center align-middle"
-                @click="openMenu =! openMenu"
-                :aria-expanded="openMenu"
-                :aria-label="Navigation Menu"
-                aria-controls="mobile-navigation"
-        >
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                 stroke="currentColor"
-                 class="w-7 h-7">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
-            </svg>
-        </button>
-        <nav class="hidden md:flex">
-            <ul class="flex flex-row">
-                {% for item in navigation.menu_items.all %}
-                    <li class="inline-flex py-2 px-2 border-gray-200 border-l last:border-r">
-                        <a class="text-sm font-medium hover:text-shadow shadow-gray-400"
-                           href="{{ item.link }}" {% if item.open_in_new_tab %}
-                           target="_blank"{% endif %}>{{ item.title }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
-        </nav>
-    </header>
 
-    <nav id="mobile-navigation" class="fixed top-0 right-0 bottom-0 left-0 backdrop-blur-sm z-10 font-cinzel"
-         :class="openMenu ? 'visible' : 'invisible'" x-cloak>
-
-        <ul class="absolute top-0 right-0 bottom-0 w-10/12 py-4 bg-white shadow-2xl z-10 transition-all dark:bg-gray-900 dark:text-gray-50"
-            :class="openMenu ? 'translate-x-0' : 'translate-x-full'">
-            <div class="flex justify-end px-8">
-                <button
-                        @click="openMenu = !openMenu"
-                        :aria-expanded="openMenu"
-                        :aria-label="Close Navigation Menu"
-                        aria-controls="mobile-navigation"
-                >
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                         stroke="currentColor"
-                         class="w-7 h- ">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-                    </svg>
-
-                </button>
-            </div>
+<header class="flex min-h-[68px] justify-between items-center bg-white drop-shadow-sm py-4 px-8 font-cinzel dark:bg-nav dark:text-gray-50 dark:drop-shadow-xl">
+    <div class="font-semibold text-md tracking-widest text-md md:text-xl">MIROSŁAW WŁOCH</div>
+    <button class="flex md:hidden flex-col items-center align-middle"
+            @click="openMenu =! openMenu"
+            :aria-expanded="openMenu"
+            :aria-label="Navigation Menu"
+            aria-controls="mobile-navigation"
+    >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+             stroke="currentColor"
+             class="w-7 h-7">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+        </svg>
+    </button>
+    <nav class="hidden md:flex">
+        <ul class="flex flex-row">
             {% for item in navigation.menu_items.all %}
-                <li class="border-b border-inherit">
-                    <a class="block p-4 hover:text-shadow shadow-gray-400"
+                <li class="inline-flex py-2 px-4">
+                    <a class="text-sm font-medium hover:text-shadow shadow-gray-400"
                        href="{{ item.link }}" {% if item.open_in_new_tab %}
                        target="_blank"{% endif %}>{{ item.title }}</a>
                 </li>
             {% endfor %}
         </ul>
-        <button class="absolute top-0 right-0 bottom-0 left-0"
-                @click="openMenu = !openMenu"
-                :aria-expanded="openMenu"
-                :aria-label="Close Navigation Menu"
-                aria-controls="mobile-navigation"
-        >
-        </button>
     </nav>
-</div>
+</header>
+
+<nav id="mobile-navigation" class="fixed top-0 right-0 bottom-0 left-0 backdrop-blur-sm z-10 font-cinzel"
+     :class="openMenu ? 'visible' : 'invisible'" x-cloak>
+
+    <ul class="absolute top-0 right-0 bottom-0 w-10/12 py-4 bg-white shadow-2xl z-10 transition-all dark:bg-nav dark:text-gray-50"
+        :class="openMenu ? 'translate-x-0' : 'translate-x-full'">
+        <div class="flex justify-end px-8">
+            <button
+                    @click="openMenu = !openMenu"
+                    :aria-expanded="openMenu"
+                    :aria-label="Close Navigation Menu"
+                    aria-controls="mobile-navigation"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                     stroke="currentColor"
+                     class="w-7 h- ">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+
+            </button>
+        </div>
+        {% for item in navigation.menu_items.all %}
+            <li class="border-b border-gray-500">
+                <a class="block p-4 hover:text-shadow shadow-gray-400"
+                   href="{{ item.link }}" {% if item.open_in_new_tab %}
+                   target="_blank"{% endif %}>{{ item.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <button class="absolute top-0 right-0 bottom-0 left-0"
+            @click="openMenu = !openMenu"
+            :aria-expanded="openMenu"
+            :aria-label="Close Navigation Menu"
+            aria-controls="mobile-navigation"
+    >
+    </button>
+</nav>
+
+
 
