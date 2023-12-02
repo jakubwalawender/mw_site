@@ -1,6 +1,9 @@
 .font-cinzel {
     font-family: Cinzel, sans-serif;
 }
+.font-raleway {
+    font-family: Raleway, sans-serif;
+}
 
 [x-cloak] {
     display: none !important;

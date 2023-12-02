@@ -2,12 +2,10 @@
 {% load static tailwind_tags %}
 {% load static %}
 <!DOCTYPE html>
-<html lang="en" x-data="{
-      darkMode: localStorage.getItem('darkMode')
-      || localStorage.setItem('darkMode', 'dark')}"
-      x-init="$watch('darkMode', val => {
-      localStorage.setItem('darkMode', val)
-      val==='dark'?initMapDark():initMap()
+<html class="scroll-smooth" lang="en"
+      x-data="{darkMode: localStorage.getItem('darkMode') || localStorage.setItem('darkMode', 'dark')}"
+      x-init="$watch('darkMode', val => {localStorage.setItem('darkMode', val)
+        val==='dark'?initMapDark():initMap()
       })"
       x-bind:class="{'dark': darkMode === 'dark' || (darkMode === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)}">
 <head>
@@ -37,14 +35,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap"
           rel="stylesheet">
-    <script src="//unpkg.com/alpinejs" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     {% tailwind_css %}
     {% block extra_css %}
         {# Override this in templates to add extra stylesheets #}
     {% endblock %}
 </head>
 
-<body class="{% block body_class %}{% endblock %} bg-gray-100 dark:bg-zinc-800 dark:text-gray-50"
+<body class="{% block body_class %}{% endblock %} font-raleway font-light bg-gray-200 dark:bg-zinc-800 dark:text-gray-50"
       x-data="{openMenu:false}"
       :class="openMenu ? 'overflow-hidden' : 'overflow-visible'">
 {% block hero %}{% endblock %}

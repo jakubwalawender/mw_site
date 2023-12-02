@@ -6,6 +6,16 @@ function initMap() {
             mapTypeControlOptions: {
                 mapTypeIds: ["roadmap", "satellite", "hybrid", "terrain", "styled_map"],
             },
+        styles: [
+             {
+                    featureType: "poi.business",
+                    stylers: [
+                        {
+                            visibility: "off"
+                        }
+                    ]
+                },
+        ]
         }
     );
     new google.maps.Marker({
@@ -37,6 +47,14 @@ function initMapDark() {
                     featureType: "poi",
                     elementType: "labels.text.fill",
                     stylers: [{color: "#d59563"}],
+                },
+                {
+                    featureType: "poi.business",
+                    stylers: [
+                        {
+                            visibility: "off"
+                        }
+                    ]
                 },
                 {
                     featureType: "poi.park",
@@ -106,7 +124,7 @@ function initMapDark() {
             ],
         }
     );
-     new google.maps.Marker({
+    new google.maps.Marker({
         position: marker,
         map: map,
         title: "Kancelaria Adwokacka Mirosław Włoch",
