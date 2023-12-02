@@ -24,7 +24,7 @@
         <ul class="flex flex-row">
             {% for item in navigation.menu_items.all %}
                 <li class="inline-flex py-2 px-3">
-                    <a class="text-sm font-medium hover:text-shadow shadow-gray-400"
+                    <a class="text-sm font-medium transition duration-200 hover:text-yellow-600 dark:hover:text-yellow-500 shadow-gray-400"
                        href="{{ item.link }}" {% if item.open_in_new_tab %}
                        target="_blank"{% endif %}>{{ item.title }}</a>
                 </li>
@@ -61,7 +61,7 @@
         </div>
         {% for item in navigation.menu_items.all %}
             <li class="border-b border-gray-500">
-                <a class="block p-4 hover:text-shadow shadow-gray-400"
+                <a class="block p-4 hover:text-yellow-600 dark:hover:text-yellow-500 shadow-gray-400"
                    href="{{ item.link }}" {% if item.open_in_new_tab %}
                    target="_blank"{% endif %}>{{ item.title }}</a>
             </li>
