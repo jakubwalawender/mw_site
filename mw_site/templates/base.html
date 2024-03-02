@@ -45,15 +45,14 @@
     {% endblock %}
 </head>
 
-<body class="{% block body_class %}{% endblock %} font-raleway font-light bg-gray-200 dark:bg-zinc-800 dark:text-gray-50"
+<body class="
+        {% block body_class %}{% endblock %} font-raleway font-light bg-gray-200 dark:bg-zinc-800 dark:text-gray-50"
       x-data="{openMenu:false}"
       :class="openMenu ? 'overflow-hidden' : 'overflow-visible'">
-{% block hero %}{% endblock %}
 {% include 'components/navbar.html' %}
-{% wagtailuserbar %}
 {% block content %}{% endblock %}
 {% include 'components/footer.html' %}
-
+{% wagtailuserbar %}
 {# Global javascript #}
 <script type="text/javascript" src="{% static 'js/mw_site.js' %}"></script>
 
