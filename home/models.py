@@ -40,11 +40,9 @@ class Hero(blocks.StructBlock):
 class AboutMeBlock(blocks.StructBlock):
     title = blocks.RichTextBlock()
     text = blocks.RichTextBlock()
-    image = ImageChooserBlock()
     panels = [
         FieldPanel("title"),
         FieldPanel("text"),
-        FieldPanel("image")
     ]
 
     class Meta:
@@ -54,8 +52,6 @@ class AboutMeBlock(blocks.StructBlock):
 
     def get_context(self, value, parent_context=None):
         context = super().get_context(value, parent_context=parent_context)
-        img_url = value.get('image').file.url
-        context['image_url'] = img_url
         return context
 
 
