@@ -7,28 +7,8 @@
 
 {% block body_class %}template-homepage{% endblock %}
 
-{#{% for block in page.body %}#}
-{#    {% if block.block_type == 'hero' %}#}
-{#        {% block hero %}#}
-{#            {% include "home/components/hero.html" with content=block.value %}#}
-{#        {% endblock %}#}
-{#    {% endif %}#}
-{#{% endfor %}#}
-
-
-
 {% block content %}
     {% for block in page.body %}
-        {% if block.block_type == 'hero' %}
-            {% with content=block.value %}
-                {% include "home/components/hero.html" %}
-            {% endwith %}
-        {% endif %}
+        {% include_block block with content=block.value %}
     {% endfor %}
-    {% include 'home/components/about_me.html' %}
-    <div class="flex justify-center h-96" id="map"></div>
 {% endblock content %}
-{% block extra_js %}
-    <script src="{% static 'js/fetch_map.js' %}"></script>
-    <script src="{% static 'js/init_map.js' %}"></script>
-{% endblock %}
