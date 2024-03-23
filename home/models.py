@@ -20,6 +20,8 @@ class HeroButton(blocks.StructBlock):
 
 
 class Hero(blocks.StructBlock):
+    motto_text = blocks.RichTextBlock()
+    motto_text_small = blocks.RichTextBlock()
     heading_text = blocks.RichTextBlock()
     heading_text_small = blocks.RichTextBlock()
     button = HeroButton()
@@ -74,7 +76,7 @@ class FoliumMapBlock(blocks.StructBlock):
         zoom_level = value.get('zoom_level')
 
         if latitude is not None and longitude is not None:
-            f = folium.Figure(height=300)
+            f = folium.Figure(height=350)
             map = folium.Map(location=[latitude, longitude], zoom_start=zoom_level, scrollWheelZoom=False).add_to(f)
             # folium.TileLayer('MapBox Dark').add_to(map)
             popup_content = f'<div style="white-space: nowrap;">{pin_tooltip}</div>'
@@ -85,10 +87,11 @@ class FoliumMapBlock(blocks.StructBlock):
 
 
 class ContactBlock(blocks.StructBlock):
-    address = blocks.TextBlock(required=True)
-    telephone = blocks.TextBlock(required=True)
-    mail = blocks.TextBlock(required=True)
-    folium_map = FoliumMapBlock()
+    address = blocks.TextBlock(required=False)
+    telephone = blocks.ListBlock(blocks.TextBlock(required=False))
+    mail = blocks.TextBlock(required=False)
+    fax = blocks.TextBlock(required=False)
+    folium_map = FoliumMapBlock(required=False)
 
     class Meta:
         icon = 'phone'

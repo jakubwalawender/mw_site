@@ -2,17 +2,31 @@
     <div class="absolute w-full right-0 h-full bg-center overflow-hidden bg-cover bg-no-repeat bg-[url('/static/img/hero-img.jpg')] dark:text-gray-900 shadow-2xl">
         <div class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed bg-[hsla(0,0%,0%,0.65)] backdrop-blur-sm">
 
-            <div class="flex h-full items-center justify-center">
+            <div class="flex h-full items-center justify-center relative">
+                {% if content.motto_text %}
+                    <div class="absolute top-40 right-10 text-gray-100 tracking-wide font-bold italic text-xs md:text-sm lg:text-base">
+                        <div>
+                            {{ content.motto_text }}
+                        </div>
+                    </div>
+                {% endif %}
+                {% if content.motto_text_small %}
+                    <div class="absolute top-48 right-10 text-gray-100 tracking-wide font-light italic text-xs md:text-sm lg:text-base">
+                        <div>
+                            {{ content.motto_text_small }}
+                        </div>
+                    </div>
+                {% endif %}
                 <div class="px-6 text-center text-white md:px-12 w-3/4">
-                    <div class="mt-2 text-2xl font-light tracking-tight md:text-3xl lg:text-4xl">
+                    <div class="mt-2 font-bold tracking-tight text-4xl md:text-6xl">
                         {{ content.heading_text }}
                     </div>
                     <div class="mt-2 mb-16 text-md font-light italic tracking-tight md:text-md lg:text-lg">
                         {{ content.heading_text_small }}
                     </div>
                     <a type="button" href="{{ content.button.link_url }}"
-                            class="rounded border-2 border-yellow-600 px-[46px] pt-[14px] pb-[12px] text-sm font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-yellow-400 hover:bg-neutral-100 hover:bg-opacity-10 hover:text-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:text-neutral-200"
-                            data-te-ripple-init data-te-ripple-color="light">
+                       class="rounded border-2 border-yellow-600 px-[46px] pt-[14px] pb-[12px] text-sm font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-yellow-400 hover:bg-neutral-100 hover:bg-opacity-10 hover:text-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:text-neutral-200"
+                       data-te-ripple-init data-te-ripple-color="light">
                         {{ content.button.text }}
                     </a>
                 </div>
